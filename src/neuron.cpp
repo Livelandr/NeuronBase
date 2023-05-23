@@ -30,7 +30,7 @@ void Neuron::revWeights(std::vector<double>& _offset) {
     }
 }
 
-double Neuron::GetLastValue() {
+double Neuron::getLastValue() {
     return lastGeneratedValue;
 }
 
