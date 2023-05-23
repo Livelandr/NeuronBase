@@ -3,7 +3,8 @@
 #include "functions.h"
 
 class Neuron {
-
+private:
+    double lastGeneratedValue = 0;
 public:
     std::vector<double> weights;
     neuronFunctions::TYPE activatorFunc;
@@ -19,6 +20,8 @@ public:
 
     void addWeights(std::vector<double>& _offset);
     void revWeights(std::vector<double>& _offset);
+
+    double getLastValue();
 
     double calculate(std::vector<double>& input);
 };
