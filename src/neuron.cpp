@@ -30,6 +30,10 @@ void Neuron::revWeights(std::vector<double>& _offset) {
     }
 }
 
+double Neuron::GetLastValue() {
+    return lastGeneratedValue;
+}
+
 
 void Neuron::setWeightOffsetSmoothing(double smooth) {
     weightOffsetSmoothing = smooth;
@@ -43,6 +47,6 @@ double Neuron::calculate(std::vector<double>& input) {
      for (int i = 0; i < count; i++) {
         sum += input[i] * weights[i];
      }
-
-     return neuronFunctions::neuronFunction(sum, activatorFunc);
+     lastGeneratedValue = neuronFunctions::neuronFunction(sum, activatorFunc);
+     return lastGeneratedValue;
 }
