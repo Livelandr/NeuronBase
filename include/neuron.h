@@ -5,24 +5,23 @@
 class Neuron {
 private:
     double lastGeneratedValue = 0;
-    double lastError;
 public:
-    double weight = 1;
+    std::vector<double> weights;
     neuronFunctions::TYPE activatorFunc;
     double weightOffsetSmoothing = 1;
-    double learningRate = 0.01;
 
-    Neuron(neuronFunctions::TYPE activ = neuronFunctions::LINEAR);
+    Neuron(int weightCount, neuronFunctions::TYPE activ = neuronFunctions::LINEAR);
 
     void setWeightOffsetSmoothing(double smooth);
 
     void setActivatorFunc(neuronFunctions::TYPE activ);
-    void setWeight(double val);
-    void addWeight(double _offset);
-    void train(double input, double expected);
+    void setWeight(int index, double val);
+    void setWeights(std::vector<double>& _weights);
+
+    void addWeights(std::vector<double>& _offset);
+    void revWeights(std::vector<double>& _offset);
 
     double getLastValue();
-    double getLastError();
 
-    double calculate(double input);
+    double calculate(std::vector<double>& input);
 };
